@@ -8,4 +8,9 @@ router.get('/', function(req, res, next) {
 
 // Teste
 
+/* GET Contacto page. */
+router.get('/', function(req, res, next) {
+  res.render('contacto', { title: 'SixPackAcademy', morada: 'Rua Faria Guimarães, 753 , Porto, Portugal' });
+});
+
 module.exports = router;
