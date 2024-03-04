@@ -7,4 +7,4 @@ Website para os clientes do ginásio SixPackAcademy.
  - Gabinete de Massagens
 
 Morada: Rua Faria Guimarães, 753 , Porto, Portugal
-Telefone - 22 400 1603
+Telefone: 22 400 1603
