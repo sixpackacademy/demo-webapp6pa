@@ -6,3 +6,4 @@ Website para os clientes do ginásio SixPackAcademy.
  - Ginásio
  - Gabinete de Massagens
 
+Morada: Rua Faria Guimarães, 753 , Porto, Portugal
