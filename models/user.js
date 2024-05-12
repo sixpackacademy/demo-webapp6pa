@@ -1,5 +1,3 @@
-const userController = require('../controllers/user.controller');
-
 'use strict';
 const {
   Model

@@ -13,6 +13,4 @@ router.get('/', function(req, res, next) {
   res.render('contacto', { title: 'SixPackAcademy', morada: 'Rua Faria Guimarães, 753 , Porto, Portugal', telefone:"22 400 1603" });
 });
 
-router.post('/register', userController.register)
-
 module.exports = router;
