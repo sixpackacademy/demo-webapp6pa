@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Service.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    duration: DataTypes.STRING,
-    price: DataTypes.REAL
+    name: {type: DataTypes.STRING, allowNull: false},
+    description: {type: DataTypes.STRING, allowNull: false},
+    duration: {type: DataTypes.STRING},
+    price: {type: DataTypes.REAL, allowNull: false}
   }, {
     sequelize,
     modelName: 'Service',
