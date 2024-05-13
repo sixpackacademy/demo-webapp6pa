@@ -10,10 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       duration: {
         type: Sequelize.STRING
@@ -22,7 +24,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       price: {
-        type: Sequelize.REAL
+        type: Sequelize.REAL,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
