@@ -13,10 +13,12 @@ module.exports = {
         type: Sequelize.DATE
       },
       UserID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Users', key: 'id'}
       },
       ServiceID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Services', key: 'id'}
       },
       status: {
         type: Sequelize.STRING

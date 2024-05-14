@@ -1,3 +1,7 @@
+const models = require('../models');
+const User = models.User;
+const Service = models.Service;
+
 'use strict';
 const {
   Model
@@ -15,8 +19,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   ServiceAppointment.init({
     date_time: DataTypes.DATE,
-    UserID: DataTypes.INTEGER,
-    ServiceID: DataTypes.INTEGER,
+    UserID: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: User,
+        key: 'id',
+      }
+    },
+    ServiceID: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Service,
+        key: 'id',
+      }
+    },
     status: DataTypes.STRING,
     is_aproved: DataTypes.BOOLEAN,
     approved_by: DataTypes.INTEGER
