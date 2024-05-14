@@ -37,7 +37,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     status: {type: DataTypes.STRING, defaultValue: "Pendente"},
     is_aproved: {type: DataTypes.BOOLEAN, defaultValue: false},
-    approved_by: DataTypes.INTEGER
+    approved_by: {type: DataTypes.INTEGER, allowNull: true, references: {
+      model: User,
+      key: 'id',
+    }}
   }, {
     sequelize,
     modelName: 'ServiceAppointment',
