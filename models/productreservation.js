@@ -1,3 +1,7 @@
+const models = require('../models')
+const User = models.User;
+const Product = models.Product;
+
 'use strict';
 const {
   Model
@@ -14,11 +18,23 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ProductReservation.init({
-    UserID: DataTypes.INTEGER,
-    ProductID: DataTypes.INTEGER,
+    UserID: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: User,
+        key: 'id',
+      }
+    },
+    ProductID: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Product,
+        key: 'id'
+      }
+    },
     status: DataTypes.STRING,
     is_aproved: DataTypes.BOOLEAN,
-    approved_by: DataTypes.INTEGER
+    approved_by: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'ProductReservation',
