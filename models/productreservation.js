@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   ProductReservation.init({
     UserID: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: User,
         key: 'id',
@@ -27,14 +28,24 @@ module.exports = (sequelize, DataTypes) => {
     },
     ProductID: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: Product,
         key: 'id'
       }
     },
-    status: DataTypes.STRING,
-    is_aproved: DataTypes.BOOLEAN,
-    approved_by: DataTypes.INTEGER,
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: "Pendente",
+    },
+    is_aproved: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    approved_by: {type: DataTypes.INTEGER, allowNull: true, references: {
+      model: User,
+      key: 'id',
+    }},
   }, {
     sequelize,
     modelName: 'ProductReservation',
