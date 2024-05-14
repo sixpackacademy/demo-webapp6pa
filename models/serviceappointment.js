@@ -18,9 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ServiceAppointment.init({
-    date_time: DataTypes.DATE,
+    date_time: {type: DataTypes.DATE, allowNull: false},
     UserID: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: User,
         key: 'id',
@@ -28,13 +29,14 @@ module.exports = (sequelize, DataTypes) => {
     },
     ServiceID: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: Service,
         key: 'id',
       }
     },
-    status: DataTypes.STRING,
-    is_aproved: DataTypes.BOOLEAN,
+    status: {type: DataTypes.STRING, defaultValue: "Pendente"},
+    is_aproved: {type: DataTypes.BOOLEAN, defaultValue: false},
     approved_by: DataTypes.INTEGER
   }, {
     sequelize,
