@@ -48,12 +48,19 @@ const serviceappointment = async(req, res) => {
     try {
         const service = await Service.findOne({where:{id: req.params.id}})
         const user = await User.findOne({where: {username: req.params.username}})
-        const service_appointment = await ServiceAppointment.create({
-            date_time: req.body.date_time,
-            UserID: user.id,
-            ServiceID: service.id,
-        })
-        res.json(service_appointment)
+        const service_appointment_exists = await ServiceAppointment.findOne({where: {UserID: user.id, ServiceID: service.id}})
+        if(service_appointment_exists){
+            // What if he already done that servic
+            // and he wants to appoint it again but to another day
+            res.json("Service already appointed.")
+        } else {
+            const service_appointment = await ServiceAppointment.create({
+                date_time: req.body.date_time,
+                UserID: user.id,
+                ServiceID: service.id,
+            })
+            res.json(service_appointment)
+        }   
     } catch(error) {
         res.json({message: error.messageS})
     }
