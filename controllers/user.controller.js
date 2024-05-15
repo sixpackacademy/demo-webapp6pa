@@ -46,6 +46,14 @@ const login = async(req, res) => {
 
 }
 
+// Just check if its logged in or not
+const imLoggedIn = async(req, res) => {
+    if(req.session.loggedIn){
+        res.json({message: 'Im logged in :)'})
+    } else {
+        res.json({message: 'Im not logged in :('})
+    }
+}
 const serviceappointment = async(req, res) => {
     try {
         const service = await Service.findOne({where:{id: req.params.id}})
@@ -124,4 +132,5 @@ module.exports = {
     productreservation,
     getProductRservation,
     serviceappointment,
+    imLoggedIn,
 }
