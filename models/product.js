@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
   Product.init({
     name: {type: DataTypes.STRING, allowNull: false},
     description: {type: DataTypes.STRING, allowNull: false},
-    duration: DataTypes.STRING, // wtf remove this
     stock: DataTypes.INTEGER,
     price: {type: DataTypes.REAL, allowNull: false},
   }, {

@@ -17,9 +17,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      duration: {
-        type: Sequelize.STRING
-      },
       stock: {
         type: Sequelize.INTEGER
       },
