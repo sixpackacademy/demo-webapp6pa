@@ -2,6 +2,8 @@ const models = require('../models');
 const User = models.User;
 const Product = models.Product;
 const ProductReservation = models.ProductReservation;
+const Service = models.Service;
+const ServiceAppointment = models.ServiceAppointment;
 
 const register = async(req, res) => {
     try{
@@ -40,6 +42,21 @@ const login = async(req, res) => {
         res.json({message: 'success'})
     }
 
+}
+
+const serviceappointment = async(req, res) => {
+    try {
+        const service = await Service.findOne({where:{id: req.params.id}})
+        const user = await User.findOne({where: {username: req.params.username}})
+        const service_appointment = await ServiceAppointment.create({
+            date_time: req.body.date_time,
+            UserID: user.id,
+            ServiceID: service.id,
+        })
+        res.json(service_appointment)
+    } catch(error) {
+        res.json({message: error.messageS})
+    }
 }
 
 const productreservation = async(req, res) => {
@@ -87,5 +104,6 @@ module.exports = {
     register,
     login,
     productreservation,
-    getProductRservation
+    getProductRservation,
+    serviceappointment,
 }

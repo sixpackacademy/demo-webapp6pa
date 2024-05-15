@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/register', userController.register)
 router.post('/login', userController.login)
 router.post('/productreservation/:username/:id', userController.productreservation)
+router.post('/servicesappointments/:username/:id', userController.serviceappointment)
 
 router.get('/productsreservations', userController.getProductRservation)
 
