@@ -39,7 +39,9 @@ const login = async(req, res) => {
     } else if(!user.validPassword(data.password)){
         res.json({message: 'Invalid Password'})
     } else {
-        res.json({message: 'success'})
+        req.session.loggedIn = true
+        req.session.userID = user.id
+        res.json(user)
     }
 
 }
