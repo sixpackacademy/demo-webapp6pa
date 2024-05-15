@@ -13,6 +13,7 @@ router.post('/login', userController.login)
 router.post('/productreservation/:username/:id', userController.productreservation)
 router.post('/servicesappointments/:username/:id', userController.serviceappointment)
 router.post('/imloggedin', userController.imLoggedIn)
+router.post('/isadmin', userController.isAdmin)
 
 router.get('/productsreservations', userController.getProductRservation)
 

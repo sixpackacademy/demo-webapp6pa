@@ -41,6 +41,7 @@ const login = async(req, res) => {
     } else {
         req.session.loggedIn = true
         req.session.userID = user.id
+        req.session.is_admin = user.is_admin
         res.json(user)
     }
 
@@ -52,6 +53,15 @@ const imLoggedIn = async(req, res) => {
         res.json({message: 'Im logged in :)'})
     } else {
         res.json({message: 'Im not logged in :('})
+    }
+}
+
+// Just check if its admin or not
+const isAdmin = async(req, res) => {
+    if(req.session.is_admin === true){
+        res.json({message: 'Im admin.'})
+    } else {
+        res.json({message: 'Im not admin'})
     }
 }
 const serviceappointment = async(req, res) => {
@@ -133,4 +143,5 @@ module.exports = {
     getProductRservation,
     serviceappointment,
     imLoggedIn,
+    isAdmin
 }
