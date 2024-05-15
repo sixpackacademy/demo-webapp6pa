@@ -52,6 +52,17 @@ const serviceappointment = async(req, res) => {
         if(service_appointment_exists){
             // What if he already done that servic
             // and he wants to appoint it again but to another day
+            console.log(service)
+            if(service.status === "Feito"){
+                const service_appointment = await ServiceAppointment.create({
+                    date_time: req.body.date_time,
+                    UserID: user.id,
+                    ServiceID: service.id,
+                })
+                res.json(service_appointment)
+            } else{
+                res.json({message: "Service not done."})
+            }
             res.json("Service already appointed.")
         } else {
             const service_appointment = await ServiceAppointment.create({
