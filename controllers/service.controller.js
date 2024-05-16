@@ -20,8 +20,13 @@ const create = async(req, res) => {
 }
 
 const getServices = async(req, res) => {
-    const services = await Service.findAll();
-    res.json(services)
+    try {
+        const services = await Service.findAll();
+        res.json(services)
+    } catch (error) {
+        res.json({message: error})
+    }
+    
 }
 module.exports = {
     create,
