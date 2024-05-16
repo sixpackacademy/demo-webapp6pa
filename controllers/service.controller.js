@@ -7,6 +7,11 @@ const create = async(req, res) => {
     res.json(service);
 }
 
+const getServices = async(req, res) => {
+    const services = await Service.findAll();
+    res.json(services)
+}
 module.exports = {
-    create
+    create,
+    getServices
 }
