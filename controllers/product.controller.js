@@ -13,6 +13,12 @@ const create = async(req, res) => {
     
 }
 
+const getProducts = async(req, res) => {
+    const products = await Product.findAll()
+    res.json(products);
+}
+
 module.exports = {
-    create
+    create,
+    getProducts
 }
