@@ -31,6 +31,11 @@ const register = async(req, res) => {
     
 }
 
+const getUsers = async(req, res) => {
+    const users = await User.findAll()
+    res.json(users);
+}
+
 const login = async(req, res) => {
     const data = req.body;
     const user = await User.findOne({where: {username: data.username}})
@@ -143,5 +148,6 @@ module.exports = {
     getProductRservation,
     serviceappointment,
     imLoggedIn,
-    isAdmin
+    isAdmin,
+    getUsers
 }
