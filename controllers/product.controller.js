@@ -1,5 +1,6 @@
 const models = require('../models');
 const Product = models.Product;
+const ProductReservation = models.ProductReservation;
 
 const create = async(req, res) => {
     try {
@@ -24,7 +25,31 @@ const getProducts = async(req, res) => {
     res.json(products);
 }
 
+const getProductRservationPendente = async(req, res) => {
+    const products = await ProductReservation.findAll({where: {is_aproved: false}})
+    res.json(products)
+
+}
+
+const aceitarReserva = async(req, res) => {
+    try {
+        const productReservation = await ProductReservation.findByPk(req.params.id)
+        if(productReservation){
+            productReservation.is_aproved = true;
+            productReservation.status = "Aceite";
+            await productReservation.save()
+            res.json(productReservation)
+        } else {
+            res.json({message: 'Reserva não encontrada.'})
+        }
+    } catch (error) {
+        res.json({message: error})
+    }
+}
+
 module.exports = {
     create,
-    getProducts
+    getProducts,
+    getProductRservationPendente,
+    aceitarReserva,
 }
