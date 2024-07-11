@@ -4,9 +4,7 @@ const userController = require('../controllers/user.controller');
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', userController.getUsers);
 
 router.post('/register', userController.register)
 router.post('/login', userController.login)
