@@ -31,8 +31,25 @@ const getProductRservationPendente = async(req, res) => {
 
 }
 
+const aceitarReserva = async(req, res) => {
+    try {
+        const productReservation = await ProductReservation.findByPk(req.params.id)
+        if(productReservation){
+            productReservation.is_aproved = true;
+            productReservation.status = "Aceite";
+            await productReservation.save()
+            res.json(productReservation)
+        } else {
+            res.json({message: 'Reserva não encontrada.'})
+        }
+    } catch (error) {
+        res.json({message: error})
+    }
+}
+
 module.exports = {
     create,
     getProducts,
-    getProductRservationPendente
+    getProductRservationPendente,
+    aceitarReserva,
 }
