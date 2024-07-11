@@ -1,5 +1,6 @@
 const models = require('../models');
 const Product = models.Product;
+const ProductReservation = models.ProductReservation;
 
 const create = async(req, res) => {
     try {
@@ -24,7 +25,14 @@ const getProducts = async(req, res) => {
     res.json(products);
 }
 
+const getProductRservationPendente = async(req, res) => {
+    const products = await ProductReservation.findAll({where: {is_aproved: false}})
+    res.json(products)
+
+}
+
 module.exports = {
     create,
-    getProducts
+    getProducts,
+    getProductRservationPendente
 }
