@@ -96,7 +96,7 @@ const serviceappointment = async(req, res) => {
             res.json(service_appointment)
         }   
     } catch(error) {
-        res.json({message: error.messageS})
+        res.json({message: error.message})
     }
 }
 
